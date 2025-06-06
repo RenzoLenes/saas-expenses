@@ -12,7 +12,7 @@ interface SideNavProps {
 }
 
 function SideNav({ isMobileMenuOpen, setIsMobileMenuOpen }: SideNavProps) {
-    const [isMobile, setIsMobile] = useState(false)
+    const isMobile=false
     const [isHovered, setIsHovered] = useState(false)
 
     const menuList = [

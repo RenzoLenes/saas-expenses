@@ -2,13 +2,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input'
 import { Budgets, Expenses } from '@/db/schema';
 import { db } from '@/utils/dbConfig';
-import React, { use, useState } from 'react'
+import React, { useState } from 'react'
 import { toast } from 'sonner';
-import { UserResource } from "@clerk/types";
 import moment from 'moment';
 import { Loader } from 'lucide-react';
 
-function AddExpense({ budgetId, user, refreshData }: { budgetId: string, user: UserResource | null | undefined, refreshData: () => void }) {
+function AddExpense({ budgetId, refreshData }: { budgetId: string, refreshData: () => void }) {
 
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');

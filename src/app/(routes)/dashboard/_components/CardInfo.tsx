@@ -8,20 +8,22 @@ function CardInfo({ budgetList }: { budgetList: BudgetListItem[] }) {
   const [totalSpend, setTotalSpend] = React.useState(0);
 
   useEffect(() => {
+    const CalculateCardInfo = () => {
+      console.log(budgetList);
+      let totalBudget_ = 0;
+      let totalSpend_ = 0;
+      budgetList.forEach((element) => {
+        totalBudget_ += element.amount;
+        totalSpend_ += element.totalSpend || 0;
+      });
+
+      setTotalBudget(totalBudget_);
+      setTotalSpend(totalSpend_);
+    }
     CalculateCardInfo();
   }, [budgetList]);
 
-  const CalculateCardInfo = () => {
-    console.log(budgetList);
-    let totalBudget_ = 0;
-    let totalSpend_ = 0;
-    budgetList.forEach((element) => {
-      totalBudget_ += element.amount,
-        totalSpend_ += element.totalSpend || 0;
-    })
-    setTotalBudget(totalBudget_);
-    setTotalSpend(totalSpend_);
-  }
+
 
 
   return (

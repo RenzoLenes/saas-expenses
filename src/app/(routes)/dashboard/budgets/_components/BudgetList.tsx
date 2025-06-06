@@ -19,7 +19,9 @@ function BudgetList() {
     const { user } = useUser();
 
     useEffect(() => {
-        user && getBudgetsList();
+        if (user) {
+            getBudgetsList();
+        }
     }, [user]);
 
     /* Use to get budget list */

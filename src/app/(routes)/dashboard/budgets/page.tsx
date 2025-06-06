@@ -1,5 +1,4 @@
 import React from 'react'
-import { UserButton } from '@clerk/nextjs'
 import BudgetList from './_components/BudgetList'
 
 function Budgets() {

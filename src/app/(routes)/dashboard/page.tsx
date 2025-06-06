@@ -1,5 +1,5 @@
 "use client"
-import { UserButton, useUser } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs'
 import CardInfo from './_components/CardInfo';
 import { useEffect, useState } from 'react';
 import { BudgetListItem } from './budgets/interfaces/BudgetListItem';
@@ -19,7 +19,9 @@ function Dashboard() {
   const [expensesList, setExpensesList] = useState<ExpenseListItem[]>([]);
 
   useEffect(() => {
-    user && getBudgetsList();
+    if (user) {
+      getBudgetsList()
+    }
   }, [user]);
 
   /* Use to get budget list */
@@ -68,7 +70,7 @@ function Dashboard() {
 
     <div className='p-8'>
       <h2 className='font-bold text-3xl'>Hi, {user?.firstName} ✌️ </h2>
-      <p className='text-gray-500'>Here's what happening with your money, Let's manage your expenses</p>
+      <p className='text-gray-500'>Here&apos;s what happening with your money, Let&apos;s manage your expenses</p>
       <CardInfo budgetList={budgetList} />
 
       <div className='grid grid-cols-1 md:grid-cols-3 mt-6 gap-5'>

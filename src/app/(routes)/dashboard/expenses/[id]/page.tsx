@@ -12,7 +12,7 @@ import AddExpense from '../_components/AddExpense';
 import { ExpenseListItem } from '../interfaces/ExpenseListItem';
 import ExpenseListTable from '../_components/ExpenseListTable';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Edit, PenBox, Trash } from 'lucide-react';
+import { ArrowLeft, Trash } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -39,7 +39,10 @@ function ExpensesScreen({ params }: { params: Promise<{ id: string }> }) {
   const route = useRouter();
 
   useEffect(() => {
-    user && getBudgetInfo();
+
+    if(user){
+      getBudgetInfo();
+    }
   }, [user]);
 
 
@@ -92,6 +95,8 @@ function ExpensesScreen({ params }: { params: Promise<{ id: string }> }) {
       const result = await db.delete(Budgets)
         .where(eq(Budgets.id, Number(id)))
         .returning();
+
+      console.log(result);
     }
     toast('Budget Deleted!');
 
@@ -147,7 +152,6 @@ function ExpensesScreen({ params }: { params: Promise<{ id: string }> }) {
           </div>
         }
         <AddExpense budgetId={id}
-          user={user}
           refreshData={() => getBudgetInfo()} />
 
       </div>

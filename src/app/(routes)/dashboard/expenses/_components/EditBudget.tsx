@@ -1,7 +1,7 @@
 "use client"
 import { Button } from '@/components/ui/button'
 import { PenBox } from 'lucide-react'
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Dialog,
   DialogClose,
@@ -13,7 +13,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import EmojiPicker from 'emoji-picker-react'
-import { useUser } from '@clerk/nextjs'
 import { Input } from '@/components/ui/input'
 import { BudgetListItem } from '../../budgets/interfaces/BudgetListItem'
 import { db } from '@/utils/dbConfig'
@@ -27,8 +26,6 @@ function EditBudget({ budgetInfo, refreshData }: { budgetInfo: BudgetListItem, r
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   const [emojiIcon, setEmojiIcon] = useState('');
-
-  const { user } = useUser()
 
   useEffect(() => {
     setName(budgetInfo.name);

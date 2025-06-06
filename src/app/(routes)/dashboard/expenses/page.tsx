@@ -12,11 +12,18 @@ function ExpensesPage() {
 
   const { user } = useUser();
   const [expensesList, setExpensesList] = useState<ExpenseListItem[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [budgetList, setBudgetList] = useState<BudgetListItem[]>([]);
 
+
+
   useEffect(() => {
-    user && getBudgetsList();
+    if (user) {
+      getBudgetsList();
+    }
   }, [user]);
+
+
 
   const getBudgetsList = async () => {
 
